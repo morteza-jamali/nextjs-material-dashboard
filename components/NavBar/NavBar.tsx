@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import NavItem from '../NavItem/NavItem';
 import styles from './NavBar.style';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
 import {
-  Avatar,
   Box,
   Button,
   Divider,
@@ -75,24 +73,10 @@ const items = [
 
 export default function NavBar(onMobileClose: any, openMobile: boolean) {
   const _styles = makeStyles(styles())();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (openMobile && onMobileClose) {
-      onMobileClose();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname]);
-
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar
-          className={_styles.avatar}
-          component={RouterLink}
-          src={user.avatar}
-          to="/app/account"
-        />
+        <div>Avatar</div>
         <Typography className={_styles.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>

@@ -27,7 +27,7 @@ export default function Custom404() {
             <img
               alt="Under development"
               className={_styles.image}
-              src={`${GLOBALS.PATH.IMAGES}/404.svg`}
+              src={`${GLOBALS.PATH.IMAGES}/undraw_page_not_found_su7k.svg`}
             />
           </Box>
         </Container>

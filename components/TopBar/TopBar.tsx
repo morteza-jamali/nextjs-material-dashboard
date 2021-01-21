@@ -15,7 +15,6 @@ import {
   Hidden,
   IconButton
 } from '@material-ui/core';
-import { Link as RouterLink } from 'react-router-dom';
 
 let _styles: any;
 
@@ -32,8 +31,7 @@ const TopBarPropsDefaultValue: ITopBarPropsType = {
 };
 
 export default function TopBar(
-  props: ITopBarPropsType = TopBarPropsDefaultValue,
-  ...rest: any
+  props: ITopBarPropsType = TopBarPropsDefaultValue
 ) {
   _styles = makeStyles(styles(props.layout))();
 
@@ -41,11 +39,7 @@ export default function TopBar(
     case 'MAIN':
       return MainLayoutTopBar(props.className);
     case 'DASHBOARD':
-      return DashboardLayoutTopBar(
-        props.className,
-        props.onMobileNavOpen,
-        rest
-      );
+      return DashboardLayoutTopBar(props.className, props.onMobileNavOpen);
   }
 }
 
@@ -59,19 +53,15 @@ const MainLayoutTopBar = (className: string) => (
   </AppBar>
 );
 
-const DashboardLayoutTopBar = (
-  className: string,
-  onMobileNavOpen: any,
-  ...rest: any
-) => {
+const DashboardLayoutTopBar = (className: string, onMobileNavOpen: any) => {
   const [notifications] = useState([]);
 
   return (
-    <AppBar className={clsx(_styles.root, className)} elevation={0} {...rest}>
+    <AppBar className={clsx(_styles.root, className)} elevation={0}>
       <Toolbar>
-        <RouterLink to="/">
+        <Link href="/">
           <Logo />
-        </RouterLink>
+        </Link>
         <Box flexGrow={1} />
         <Hidden mdDown>
           <IconButton color="inherit">
